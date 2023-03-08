@@ -46,6 +46,12 @@ type cases = [
 
 
 // ============= Your Code Here =============
-type AppendToObject<T, U extends string, V> = { 
+type AppendToObject<T, U extends string | number | symbol, V> = { 
   [K in keyof T | U]: K extends keyof T ? T[K] : V 
 }
+
+/**
+ * keyof any 的类型是string | number | symbol
+ */
+type a = keyof any
+type b = a extends string | number | symbol ? true : false
